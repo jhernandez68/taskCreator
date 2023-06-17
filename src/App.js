@@ -22,7 +22,7 @@ function App() {
 
   const toggleTask = task => {
     setTaskItems(
-      taskItems.map(t => (t.name == task.name) ? {...t, done: !t.done}: t)
+      taskItems.map(t => (t.name === task.name) ? {...t, done: !t.done}: t)
     )
   }
 
@@ -46,20 +46,24 @@ function App() {
 
   return (
     //Contenedor principal
-    <div className="App">
-      <TaskCreator crearTarea={crearTarea}/>
-      <TaskTable tasks = {taskItems} toggleTask={toggleTask}/>
-      <VisibilityControl
+    <main className="bg-dark vh-100 text-white">
 
-        setShowCompleted={(checked) => setShowCompleted (checked)}
-        cleanTasks = {cleanTasks}
-      />
-      {
-        showCompleted === true && (
-          <TaskTable tasks = {taskItems} toggleTask={toggleTask} showCompleted = {showCompleted}/>
-        )
-      }
-    </div>
+      <h1 className='text-center'>Creador de tareas</h1>
+      <div className='container col-md-4 offset-md-4 p-4'>
+        <TaskCreator crearTarea={crearTarea}/>
+        <TaskTable tasks = {taskItems} toggleTask={toggleTask}/>
+        <VisibilityControl
+          isCheked = {showCompleted}
+          setShowCompleted={(checked) => setShowCompleted (checked)}
+          cleanTasks = {cleanTasks}
+        />
+        {
+          showCompleted === true && (
+            <TaskTable tasks = {taskItems} toggleTask={toggleTask} showCompleted = {showCompleted}/>
+          )
+        }
+      </div>
+    </main>
   );
 }
 

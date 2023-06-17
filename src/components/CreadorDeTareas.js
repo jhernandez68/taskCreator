@@ -21,11 +21,18 @@ export const TaskCreator = ({crearTarea} /*aqui van los props*/) => {
 
     return (
         /* Form -> onsubmit suele enviar datos al backend*/
-        <form onSubmit={handleSubmit}>
-            <input type='text' placeholder='Ingresa una nueva tarea' 
-                value={nuevoNombreTarea}
-                onChange={(e) => setNuevoNombreTarea(e.target.value)}/>
-            <button>Guardar tarea</button>
+        <form onSubmit={handleSubmit} className='my-2 row'>
+            <div className='col-9'>
+                <input type='text' placeholder='Ingresa una nueva tarea' 
+                    value={nuevoNombreTarea}
+                    onChange={(e) => setNuevoNombreTarea(e.target.value)}
+                    className='form-control'/>
+            </div>
+
+            <div className='col-3'>
+                <button className='btn btn-success btn-sm'>Guardar</button>
+            </div>
+
         </form>
     )
 }
